@@ -116,6 +116,7 @@ svg {
 
 @media (min-width: 640px) {
   .container {
+    margin-inline: auto;
     max-width: 640px;
   }
 }
