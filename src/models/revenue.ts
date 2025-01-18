@@ -3,4 +3,5 @@ export type Revenue = {
   otherRevenues: number
   setSalary: (amount: number) => void
   setOtherRevenues: (amount: number) => void
+  revenueTotal: () => number
 }
