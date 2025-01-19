@@ -9,8 +9,18 @@ import { Food } from "@/models/food"
 import { createFoodSlice } from "./food-slice"
 import { HealthAndBeauty } from "@/models/health-and-beauty"
 import { createHealthAndBeautySlice } from "./health-and-beauty-slice"
+import { Transport } from "@/models/transport"
+import { Education } from "@/models/education"
+import { createTransportSlice } from "./transport-slice"
+import { createEducationSlice } from "./education-slice"
 
-type HouseholdBudget = Revenue & Investment & House & Food & HealthAndBeauty
+type HouseholdBudget = Revenue &
+  Investment &
+  House &
+  Food &
+  HealthAndBeauty &
+  Transport &
+  Education
 
 export const useHouseholdBudget = create<HouseholdBudget>()((...a) => ({
   ...createRevenueSlice(...a),
@@ -18,4 +28,6 @@ export const useHouseholdBudget = create<HouseholdBudget>()((...a) => ({
   ...createHouseSlice(...a),
   ...createFoodSlice(...a),
   ...createHealthAndBeautySlice(...a),
+  ...createTransportSlice(...a),
+  ...createEducationSlice(...a),
 }))
