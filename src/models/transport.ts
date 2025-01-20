@@ -1,4 +1,5 @@
 export type Transport = {
+  subway: number
   bus: number
   transportGas: number
   parking: number
@@ -7,6 +8,7 @@ export type Transport = {
   transportTaxes: number
   otherTransportExpenses: number
   transportComplementary: number
+  setSubway: (amount: number) => void
   setBus: (amount: number) => void
   setTransportGas: (amount: number) => void
   setParking: (amount: number) => void
