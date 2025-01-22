@@ -1,0 +1,28 @@
+.label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 16px;
+  padding-block: 16px;
+  margin-inline: 8px;
+}
+
+.label + .label {
+  border-top: solid 1px var(--neutral-300);
+}
+
+.currency {
+  -moz-appearance: textfield;
+
+  letter-spacing: 0.025em;
+
+  max-width: 144px;
+  text-align: right;
+}
+
+.currency::-webkit-outer-spin-button,
+.currency::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
