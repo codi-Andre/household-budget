@@ -1,5 +1,10 @@
-export type Investment = {
+type State = {
   investment: number
-  setInvestment: (amount: number) => void
-  investmentTotal: () => number
 }
+
+type Action = {
+  investmentTotal: () => number
+  setInvestment: (field: keyof State, amount: number) => void
+}
+
+export type Investment = State & Action

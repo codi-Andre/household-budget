@@ -1,17 +1,15 @@
-export type Education = {
-  schoolUniform: number
-  schoolSupplies: number
-  college: number
+type State = {
   books: number
+  college: number
   courses: number
+  schoolSupplies: number
+  schoolUniform: number
   otherEducationExpenses: number
-  educationComplementary: number
-  setSchoolUniform: (amount: number) => void
-  setSchoolSupplies: (amount: number) => void
-  setCollege: (amount: number) => void
-  setBooks: (amount: number) => void
-  setCourses: (amount: number) => void
-  setOtherEducationExpenses: (amount: number) => void
-  setEducationComplementary: (amount: number) => void
-  total: () => number
 }
+
+type Action = {
+  educationTotal: () => number
+  setEducation: (field: keyof State, amount: number) => void
+}
+
+export type Education = State & Action

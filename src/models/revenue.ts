@@ -1,7 +1,11 @@
-export type Revenue = {
+type State = {
   salary: number
   otherRevenues: number
-  setSalary: (amount: number) => void
-  setOtherRevenues: (amount: number) => void
-  revenueTotal: () => number
 }
+
+type Action = {
+  revenueTotal: () => number
+  setRevenue: (field: keyof State, amount: number) => void
+}
+
+export type Revenue = State & Action

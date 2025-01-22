@@ -10,19 +10,7 @@ export const createTransportSlice: StateCreator<Transport> = (set, get) => ({
   insurance: 0,
   transportTaxes: 0,
   otherTransportExpenses: 0,
-  transportComplementary: 0,
-  setSubway: (amount: number) => set({ subway: amount }),
-  setBus: (amount: number) => set({ bus: amount }),
-  setTransportGas: (amount: number) => set({ transportGas: amount }),
-  setParking: (amount: number) => set({ parking: amount }),
-  setCarMaintenance: (amount: number) => set({ carMaintenance: amount }),
-  setInsurance: (amount: number) => set({ insurance: amount }),
-  setTransportTaxes: (amount: number) => set({ transportTaxes: amount }),
-  setOtherTransportExpenses: (amount: number) =>
-    set({ otherTransportExpenses: amount }),
-  setTransportComplementary: (amount: number) =>
-    set({ transportComplementary: amount }),
-  total: () =>
+  transportTotal: () =>
     get().subway +
     get().bus +
     get().transportGas +
@@ -30,6 +18,6 @@ export const createTransportSlice: StateCreator<Transport> = (set, get) => ({
     get().carMaintenance +
     get().insurance +
     get().transportTaxes +
-    get().otherTransportExpenses +
-    get().transportComplementary,
+    get().otherTransportExpenses,
+  setTransport: (field, amount) => set({ [field]: amount }),
 })

@@ -1,4 +1,4 @@
-export type Transport = {
+type State = {
   subway: number
   bus: number
   transportGas: number
@@ -7,15 +7,11 @@ export type Transport = {
   insurance: number
   transportTaxes: number
   otherTransportExpenses: number
-  transportComplementary: number
-  setSubway: (amount: number) => void
-  setBus: (amount: number) => void
-  setTransportGas: (amount: number) => void
-  setParking: (amount: number) => void
-  setCarMaintenance: (amount: number) => void
-  setInsurance: (amount: number) => void
-  setTransportTaxes: (amount: number) => void
-  setOtherTransportExpenses: (amount: number) => void
-  setTransportComplementary: (amount: number) => void
-  total: () => number
 }
+
+type Action = {
+  transportTotal: () => number
+  setTransport: (field: keyof State, amount: number) => void
+}
+
+export type Transport = State & Action
