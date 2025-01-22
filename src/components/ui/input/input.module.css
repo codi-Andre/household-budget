@@ -1,0 +1,24 @@
+.input {
+  display: flex;
+
+  background-color: var(--neutral-50);
+  color: var(--neutral-700);
+
+  border: solid 1px var(--neutral-300);
+  border-radius: 12px;
+  box-shadow:
+    var(--neutral-300) 0px 1px 3px 0px,
+    var(--neutral-200) 0px 1px 2px 0px;
+  height: 40px;
+  padding: 8px 12px;
+  width: 100%;
+}
+
+.input:focus-visible {
+  outline: solid 2px var(--neutral-700);
+}
+
+.input:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
