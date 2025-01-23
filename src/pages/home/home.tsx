@@ -4,8 +4,15 @@ import { CurrencyInput } from "@/components/ui/currency-input/currency-input"
 import { formatCurrency } from "@/utils/format-currency"
 
 export function Home() {
-  const { setRevenue, salary, otherRevenues, revenueTotal } =
-    useHouseholdBudget()
+  const {
+    setRevenue,
+    salary,
+    otherRevenues,
+    revenueTotal,
+    setInvestment,
+    investment,
+    investmentTotal,
+  } = useHouseholdBudget()
 
   return (
     <>
@@ -25,6 +32,17 @@ export function Home() {
             label="outros rendimentos"
             value={otherRevenues}
             setValue={(amount) => setRevenue("otherRevenues", amount)}
+          />
+        </BudgetSection>
+
+        <BudgetSection
+          title="investimento"
+          total={formatCurrency(investmentTotal())}
+        >
+          <CurrencyInput
+            label="investimento"
+            value={investment}
+            setValue={(amount) => setInvestment("investment", amount)}
           />
         </BudgetSection>
       </main>
