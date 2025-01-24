@@ -12,6 +12,20 @@ export function Home() {
     setInvestment,
     investment,
     investmentTotal,
+    setHouse,
+    rent,
+    houseTaxes,
+    condominiumFee,
+    water,
+    energy,
+    houseGas,
+    tv,
+    internet,
+    cellphone,
+    cleaningServicesAndProducts,
+    babySitter,
+    otherHouseExpenses,
+    houseTotal,
   } = useHouseholdBudget()
 
   return (
@@ -43,6 +57,82 @@ export function Home() {
             label="investimento"
             value={investment}
             setValue={(amount) => setInvestment("investment", amount)}
+          />
+        </BudgetSection>
+
+        <BudgetSection title="Casa" total={formatCurrency(houseTotal())}>
+          <CurrencyInput
+            label="aluguel"
+            value={rent}
+            setValue={(amount) => setHouse("rent", amount)}
+          />
+
+          <CurrencyInput
+            label="impostos"
+            value={houseTaxes}
+            setValue={(amount) => setHouse("houseTaxes", amount)}
+          />
+
+          <CurrencyInput
+            label="condomínio"
+            value={condominiumFee}
+            setValue={(amount) => setHouse("condominiumFee", amount)}
+          />
+
+          <CurrencyInput
+            label="água"
+            value={water}
+            setValue={(amount) => setHouse("water", amount)}
+          />
+
+          <CurrencyInput
+            label="luz"
+            value={energy}
+            setValue={(amount) => setHouse("energy", amount)}
+          />
+
+          <CurrencyInput
+            label="gás"
+            value={houseGas}
+            setValue={(amount) => setHouse("houseGas", amount)}
+          />
+
+          <CurrencyInput
+            label="TV"
+            value={tv}
+            setValue={(amount) => setHouse("tv", amount)}
+          />
+
+          <CurrencyInput
+            label="internet"
+            value={internet}
+            setValue={(amount) => setHouse("internet", amount)}
+          />
+
+          <CurrencyInput
+            label="celular"
+            value={cellphone}
+            setValue={(amount) => setHouse("cellphone", amount)}
+          />
+
+          <CurrencyInput
+            label="serviços e produtos de limpeza"
+            value={cleaningServicesAndProducts}
+            setValue={(amount) =>
+              setHouse("cleaningServicesAndProducts", amount)
+            }
+          />
+
+          <CurrencyInput
+            label="babá"
+            value={babySitter}
+            setValue={(amount) => setHouse("babySitter", amount)}
+          />
+
+          <CurrencyInput
+            label="outras despesas"
+            value={otherHouseExpenses}
+            setValue={(amount) => setHouse("otherHouseExpenses", amount)}
           />
         </BudgetSection>
       </main>
