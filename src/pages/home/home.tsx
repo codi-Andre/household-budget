@@ -26,6 +26,11 @@ export function Home() {
     babySitter,
     otherHouseExpenses,
     houseTotal,
+    setFood,
+    groceries,
+    awayFromHome,
+    otherFoodExpenses,
+    foodTotal,
   } = useHouseholdBudget()
 
   return (
@@ -133,6 +138,26 @@ export function Home() {
             label="outras despesas"
             value={otherHouseExpenses}
             setValue={(amount) => setHouse("otherHouseExpenses", amount)}
+          />
+        </BudgetSection>
+
+        <BudgetSection title="alimentação" total={formatCurrency(foodTotal())}>
+          <CurrencyInput
+            label="mercado"
+            value={groceries}
+            setValue={(amount) => setFood("groceries", amount)}
+          />
+
+          <CurrencyInput
+            label="fora de casa"
+            value={awayFromHome}
+            setValue={(amount) => setFood("awayFromHome", amount)}
+          />
+
+          <CurrencyInput
+            label="outras despesas"
+            value={otherFoodExpenses}
+            setValue={(amount) => setFood("otherFoodExpenses", amount)}
           />
         </BudgetSection>
       </main>
