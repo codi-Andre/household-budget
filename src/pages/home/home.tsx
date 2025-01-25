@@ -31,6 +31,15 @@ export function Home() {
     awayFromHome,
     otherFoodExpenses,
     foodTotal,
+    setHealthAndBeauty,
+    medicine,
+    healthPlan,
+    doctorsAndPsychologists,
+    hygieneProducts,
+    gym,
+    salon,
+    otherHealthAndBeautyExpenses,
+    healthAndBeautyTotal,
   } = useHouseholdBudget()
 
   return (
@@ -158,6 +167,57 @@ export function Home() {
             label="outras despesas"
             value={otherFoodExpenses}
             setValue={(amount) => setFood("otherFoodExpenses", amount)}
+          />
+        </BudgetSection>
+
+        <BudgetSection
+          title="beleza e saúde"
+          total={formatCurrency(healthAndBeautyTotal())}
+        >
+          <CurrencyInput
+            label="remédios"
+            value={medicine}
+            setValue={(amount) => setHealthAndBeauty("medicine", amount)}
+          />
+
+          <CurrencyInput
+            label="plano de saúde"
+            value={healthPlan}
+            setValue={(amount) => setHealthAndBeauty("healthPlan", amount)}
+          />
+
+          <CurrencyInput
+            label="médicos e e psicólogos"
+            value={doctorsAndPsychologists}
+            setValue={(amount) =>
+              setHealthAndBeauty("doctorsAndPsychologists", amount)
+            }
+          />
+
+          <CurrencyInput
+            label="produtos de higiene pessoal"
+            value={hygieneProducts}
+            setValue={(amount) => setHealthAndBeauty("hygieneProducts", amount)}
+          />
+
+          <CurrencyInput
+            label="academia"
+            value={gym}
+            setValue={(amount) => setHealthAndBeauty("gym", amount)}
+          />
+
+          <CurrencyInput
+            label="Salão de beleza e/ou barbearia"
+            value={salon}
+            setValue={(amount) => setHealthAndBeauty("salon", amount)}
+          />
+
+          <CurrencyInput
+            label="outras despesas"
+            value={otherHealthAndBeautyExpenses}
+            setValue={(amount) =>
+              setHealthAndBeauty("otherHealthAndBeautyExpenses", amount)
+            }
           />
         </BudgetSection>
       </main>
