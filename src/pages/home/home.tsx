@@ -50,6 +50,14 @@ export function Home() {
     transportTaxes,
     otherTransportExpenses,
     transportTotal,
+    setEducation,
+    schoolUniform,
+    schoolSupplies,
+    books,
+    courses,
+    college,
+    otherEducationExpenses,
+    educationTotal,
   } = useHouseholdBudget()
 
   return (
@@ -282,6 +290,49 @@ export function Home() {
             value={otherTransportExpenses}
             setValue={(amount) =>
               setTransport("otherTransportExpenses", amount)
+            }
+          />
+        </BudgetSection>
+
+        <BudgetSection
+          title="educação"
+          total={formatCurrency(educationTotal())}
+        >
+          <CurrencyInput
+            label="uniforme escolar"
+            value={schoolUniform}
+            setValue={(amount) => setEducation("schoolUniform", amount)}
+          />
+
+          <CurrencyInput
+            label="material escolar"
+            value={schoolSupplies}
+            setValue={(amount) => setEducation("schoolSupplies", amount)}
+          />
+
+          <CurrencyInput
+            label="livros"
+            value={books}
+            setValue={(amount) => setEducation("books", amount)}
+          />
+
+          <CurrencyInput
+            label="cursos avulsos (inglês, esportes, etc)"
+            value={courses}
+            setValue={(amount) => setEducation("courses", amount)}
+          />
+
+          <CurrencyInput
+            label="faculdade"
+            value={college}
+            setValue={(amount) => setEducation("college", amount)}
+          />
+
+          <CurrencyInput
+            label="outras despesas"
+            value={otherEducationExpenses}
+            setValue={(amount) =>
+              setEducation("otherEducationExpenses", amount)
             }
           />
         </BudgetSection>
