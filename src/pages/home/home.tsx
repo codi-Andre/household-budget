@@ -40,6 +40,16 @@ export function Home() {
     salon,
     otherHealthAndBeautyExpenses,
     healthAndBeautyTotal,
+    setTransport,
+    subway,
+    bus,
+    transportGas,
+    parking,
+    carMaintenance,
+    insurance,
+    transportTaxes,
+    otherTransportExpenses,
+    transportTotal,
   } = useHouseholdBudget()
 
   return (
@@ -217,6 +227,61 @@ export function Home() {
             value={otherHealthAndBeautyExpenses}
             setValue={(amount) =>
               setHealthAndBeauty("otherHealthAndBeautyExpenses", amount)
+            }
+          />
+        </BudgetSection>
+
+        <BudgetSection
+          title="Transporte"
+          total={formatCurrency(transportTotal())}
+        >
+          <CurrencyInput
+            label="metrô"
+            value={subway}
+            setValue={(amount) => setTransport("subway", amount)}
+          />
+
+          <CurrencyInput
+            label="ônibus"
+            value={bus}
+            setValue={(amount) => setTransport("bus", amount)}
+          />
+
+          <CurrencyInput
+            label="gasolina"
+            value={transportGas}
+            setValue={(amount) => setTransport("transportGas", amount)}
+          />
+
+          <CurrencyInput
+            label="estacionamento"
+            value={parking}
+            setValue={(amount) => setTransport("parking", amount)}
+          />
+
+          <CurrencyInput
+            label="manutenção do carro"
+            value={carMaintenance}
+            setValue={(amount) => setTransport("carMaintenance", amount)}
+          />
+
+          <CurrencyInput
+            label="seguro"
+            value={insurance}
+            setValue={(amount) => setTransport("insurance", amount)}
+          />
+
+          <CurrencyInput
+            label="impostos"
+            value={transportTaxes}
+            setValue={(amount) => setTransport("transportTaxes", amount)}
+          />
+
+          <CurrencyInput
+            label="outras despesas"
+            value={otherTransportExpenses}
+            setValue={(amount) =>
+              setTransport("otherTransportExpenses", amount)
             }
           />
         </BudgetSection>
