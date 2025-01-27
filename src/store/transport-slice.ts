@@ -1,7 +1,12 @@
 import { Transport } from "@/models/transport"
 import { StateCreator } from "zustand"
 
-export const createTransportSlice: StateCreator<Transport> = (set, get) => ({
+export const createTransportSlice: StateCreator<
+  Transport,
+  [],
+  [],
+  Transport
+> = (set, get) => ({
   subway: 0,
   bus: 0,
   transportGas: 0,

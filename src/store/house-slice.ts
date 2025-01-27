@@ -1,7 +1,10 @@
 import { House } from "@/models/house"
 import { StateCreator } from "zustand"
 
-export const createHouseSlice: StateCreator<House> = (set, get) => ({
+export const createHouseSlice: StateCreator<House, [], [], House> = (
+  set,
+  get
+) => ({
   rent: 0,
   houseTaxes: 0,
   condominiumFee: 0,

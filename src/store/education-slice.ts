@@ -1,7 +1,12 @@
 import { Education } from "@/models/education"
 import { StateCreator } from "zustand"
 
-export const createEducationSlice: StateCreator<Education> = (set, get) => ({
+export const createEducationSlice: StateCreator<
+  Education,
+  [],
+  [],
+  Education
+> = (set, get) => ({
   schoolUniform: 0,
   schoolSupplies: 0,
   college: 0,

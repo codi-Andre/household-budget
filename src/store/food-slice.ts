@@ -1,7 +1,10 @@
 import { Food } from "@/models/food"
 import { StateCreator } from "zustand"
 
-export const createFoodSlice: StateCreator<Food> = (set, get) => ({
+export const createFoodSlice: StateCreator<Food, [], [], Food> = (
+  set,
+  get
+) => ({
   groceries: 0,
   awayFromHome: 0,
   otherFoodExpenses: 0,

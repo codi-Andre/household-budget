@@ -1,10 +1,12 @@
 import { HealthAndBeauty } from "@/models/health-and-beauty"
 import { StateCreator } from "zustand"
 
-export const createHealthAndBeautySlice: StateCreator<HealthAndBeauty> = (
-  set,
-  get
-) => ({
+export const createHealthAndBeautySlice: StateCreator<
+  HealthAndBeauty,
+  [],
+  [],
+  HealthAndBeauty
+> = (set, get) => ({
   medicine: 0,
   healthPlan: 0,
   doctorsAndPsychologists: 0,
