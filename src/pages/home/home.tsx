@@ -1,3 +1,4 @@
+import styles from "./home.module.css"
 import { useHouseholdBudget } from "@/store/use-household-budget"
 import { BudgetSection } from "./budget-section/budget-section"
 import { CurrencyInput } from "@/components/ui/currency-input/currency-input"
@@ -58,6 +59,8 @@ export function Home() {
     college,
     otherEducationExpenses,
     educationTotal,
+    expenses,
+    balance,
   } = useHouseholdBudget()
 
   return (
@@ -337,6 +340,25 @@ export function Home() {
           />
         </BudgetSection>
       </main>
+
+      <footer className="container">
+        <h2 className={styles.summary}>Resumo</h2>
+
+        <p className={styles.tuple}>
+          Receitas <span>{formatCurrency(revenueTotal())}</span>
+        </p>
+        <p className={styles.tuple}>
+          Gastos <span>{formatCurrency(expenses())}</span>
+        </p>
+        <p className={styles.tuple}>
+          Investimentos <span>{formatCurrency(investmentTotal())}</span>
+        </p>
+        <strong>
+          <p className={styles.tuple}>
+            Saldo <span>{formatCurrency(balance())}</span>
+          </p>
+        </strong>
+      </footer>
     </>
   )
 }
