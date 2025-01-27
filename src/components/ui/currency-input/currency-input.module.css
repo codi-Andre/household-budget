@@ -1,23 +1,54 @@
 .label {
   display: flex;
+  position: relative;
+
   align-items: center;
   justify-content: space-between;
 
   gap: 16px;
-  padding-block: 16px;
+  padding-block: 32px;
   margin-inline: 8px;
 }
 
+.label:focus-within {
+  color: var(--neutral-700);
+}
+
+.label::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+
+  bottom: -2px;
+  left: 0;
+
+  height: 2px;
+  width: 100%;
+
+  background-color: var(--neutral-700);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.label:focus-within::after {
+  transform: scaleX(1);
+}
+
 .label + .label {
-  border-top: solid 1px var(--neutral-300);
+  border-top: solid 2px var(--neutral-200);
 }
 
 .currency {
   -moz-appearance: textfield;
+  max-width: 144px;
+
+  background-color: var(--neutral-50);
+  border: none;
+  box-shadow:
+    inset 1px 2px 2px var(--neutral-200),
+    2px 1px 2px var(--neutral-200);
 
   letter-spacing: 0.025em;
-
-  max-width: 144px;
   text-align: right;
 }
 

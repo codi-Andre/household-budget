@@ -1,10 +1,19 @@
-.total {
+.title {
   display: flex;
   justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+
+  background-color: var(--neutral-200);
   color: var(--neutral-600);
 
+  border-radius: 12px;
   gap: 16px;
-  margin-inline: 12px;
+  padding: 12px 8px;
 
+  font-size: 1rem;
   font-weight: 700;
+  line-height: 1.5rem;
+  text-transform: uppercase;
 }
