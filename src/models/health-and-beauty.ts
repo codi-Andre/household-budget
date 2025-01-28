@@ -11,6 +11,8 @@ type State = {
 type Action = {
   healthAndBeautyTotal: () => number
   setHealthAndBeauty: (field: keyof State, amount: number) => void
+  clearHealthAndBeauty: () => void
+  saveHealthAndBeauty: () => void
 }
 
 export type HealthAndBeauty = State & Action

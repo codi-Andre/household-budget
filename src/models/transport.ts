@@ -12,6 +12,8 @@ type State = {
 type Action = {
   transportTotal: () => number
   setTransport: (field: keyof State, amount: number) => void
+  clearTransport: () => void
+  saveTransport: () => void
 }
 
 export type Transport = State & Action

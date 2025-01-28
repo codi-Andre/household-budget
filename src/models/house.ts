@@ -16,6 +16,8 @@ type State = {
 type Action = {
   houseTotal: () => number
   setHouse: (field: keyof State, amount: number) => void
+  clearHouse: () => void
+  saveHouse: () => void
 }
 
 export type House = State & Action

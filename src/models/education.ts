@@ -10,6 +10,8 @@ type State = {
 type Action = {
   educationTotal: () => number
   setEducation: (field: keyof State, amount: number) => void
+  clearEducation: () => void
+  saveEducation: () => void
 }
 
 export type Education = State & Action

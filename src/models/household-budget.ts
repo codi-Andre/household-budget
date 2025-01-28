@@ -14,6 +14,11 @@ type State = Revenue &
   Transport &
   Education
 
-type Action = { expenses: () => number; balance: () => number }
+type Action = {
+  expenses: () => number
+  balance: () => number
+  reset: () => void
+  saveToLocalStorage: () => void
+}
 
 export type HouseholdBudget = State & Action
