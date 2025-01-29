@@ -13,7 +13,7 @@ export function BudgetSection({ children, title, total }: BudgetSectionProps) {
         {title} <span>{total}</span>
       </h2>
 
-      {children}
+      <div className={styles.panel}>{children}</div>
     </section>
   )
 }

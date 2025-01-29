@@ -3,6 +3,8 @@ import { useHouseholdBudget } from "@/store/use-household-budget"
 import { BudgetSection } from "./budget-section/budget-section"
 import { CurrencyInput } from "@/components/ui/currency-input/currency-input"
 import { formatCurrency } from "@/utils/format-currency"
+import { Button } from "@/components/ui/button/button"
+import { toast } from "sonner"
 
 export function Home() {
   const {
@@ -61,12 +63,14 @@ export function Home() {
     educationTotal,
     expenses,
     balance,
+    reset,
+    saveToLocalStorage,
   } = useHouseholdBudget()
 
   return (
     <>
       <header className="container">
-        <h1>Gastos Domésticos</h1>
+        <h1 className={styles.title}>Gastos Domésticos</h1>
       </header>
 
       <main className="container">
@@ -358,6 +362,29 @@ export function Home() {
             Saldo <span>{formatCurrency(balance())}</span>
           </p>
         </strong>
+
+        <div className={styles.panel}>
+          <Button
+            variant="outline"
+            size="lg"
+            onClick={() => {
+              reset()
+              toast.warning("Todos os campos foram limpos")
+            }}
+          >
+            limpar
+          </Button>
+
+          <Button
+            size="lg"
+            onClick={() => {
+              saveToLocalStorage()
+              toast.success("Orçamento salvo no armazenamento local")
+            }}
+          >
+            Salvar
+          </Button>
+        </div>
       </footer>
     </>
   )
