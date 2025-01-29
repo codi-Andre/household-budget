@@ -14,6 +14,7 @@ const router = createRouter({
   routeTree,
   defaultErrorComponent: DefaultCatchBoundary,
   defaultNotFoundComponent: NotFoundPage,
+  basepath: "/household-budget/",
 })
 
 // Register the router instance for type safety
