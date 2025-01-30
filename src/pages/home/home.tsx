@@ -5,6 +5,7 @@ import { CurrencyInput } from "@/components/ui/currency-input/currency-input"
 import { formatCurrency } from "@/utils/format-currency"
 import { Button } from "@/components/ui/button/button"
 import { toast } from "sonner"
+import { Link } from "@tanstack/react-router"
 
 export function Home() {
   const {
@@ -69,8 +70,12 @@ export function Home() {
 
   return (
     <>
-      <header className="container">
+      <header className={`container ${styles.header}`}>
         <h1 className={styles.title}>Gastos Domésticos</h1>
+
+        <Link className={styles.link} to="/charts">
+          Ver gráficos
+        </Link>
       </header>
 
       <main className="container">
@@ -346,7 +351,13 @@ export function Home() {
       </main>
 
       <footer className="container">
-        <h2 className={styles.summary}>Resumo</h2>
+        <div className={styles["summary-wrapper"]}>
+          <h2 className={styles.summary}>Resumo</h2>
+
+          <Link className={styles.link} to="/charts">
+            Ver no gráfico
+          </Link>
+        </div>
 
         <p className={styles.tuple}>
           Receitas <span>{formatCurrency(revenueTotal())}</span>

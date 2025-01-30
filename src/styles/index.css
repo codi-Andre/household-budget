@@ -54,3 +54,9 @@ svg {
     max-width: 640px;
   }
 }
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+}
