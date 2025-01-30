@@ -1,0 +1,64 @@
+.header {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+  padding: 16px 8px 32px;
+}
+
+.link {
+  position: relative;
+
+  padding-block: 4px;
+
+  text-underline-offset: 8px;
+
+  background-color: transparent;
+  color: var(--neutral-700);
+}
+
+.link::before {
+  content: "";
+  position: absolute;
+
+  bottom: 0;
+  left: 0;
+
+  height: 2px;
+  width: 100%;
+
+  background-color: var(--neutral-700);
+
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 0.3s ease-out;
+}
+
+.link:hover::before {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.main {
+  height: 600px;
+  margin-block: 32px 64px;
+}
+
+.label {
+  fill: var(--neutral-950);
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.cell {
+  stroke: var(--neutral-300);
+}
+
+.cell:hover {
+  opacity: 0.8;
+}
+
+.empty {
+  text-align: center;
+}
