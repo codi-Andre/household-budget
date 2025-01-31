@@ -1,10 +1,11 @@
 import { useHouseholdBudget } from "@/store/use-household-budget"
-import { Cell, Pie, PieChart, ResponsiveContainer } from "recharts"
+import { Cell, Pie, PieChart, ResponsiveContainer, Sector } from "recharts"
 import { useShallow } from "zustand/shallow"
 import { formatCurrency } from "@/utils/format-currency"
 import { Link } from "@tanstack/react-router"
 
 import styles from "./charts.module.css"
+import { useState } from "react"
 
 const COLORS = [
   "#0ea5e9",
@@ -14,6 +15,63 @@ const COLORS = [
   "#ef4444",
   "#f43f5e",
 ]
+
+/* eslint-disable */
+const renderActiveShape = (props: any) => {
+  const RADIAN = Math.PI / 180
+  const {
+    cx,
+    cy,
+    midAngle,
+    innerRadius,
+    outerRadius,
+    startAngle,
+    endAngle,
+    fill,
+    payload,
+    percent,
+    value,
+  } = props
+  const sin = Math.sin(-RADIAN * midAngle)
+  const cos = Math.cos(-RADIAN * midAngle)
+  const sx = cx + (outerRadius + 10) * cos
+  const sy = cy + (outerRadius + 10) * sin
+  const mx = cx + (outerRadius + 30) * cos
+  const my = cy + (outerRadius + 30) * sin
+  const ex = mx + (cos >= 0 ? 1 : -1) * 22
+  const ey = my
+  const textAnchor = cos >= 0 ? "start" : "end"
+
+  return (
+    <g>
+      <text x={cx} y={cy} textAnchor="middle" fill={fill}>
+        {payload.name}
+      </text>
+      <text x={cx} y={cy} dy={28} textAnchor="middle" fill={fill}>
+        {formatCurrency(value)}
+      </text>
+      <Sector
+        cx={cx}
+        cy={cy}
+        innerRadius={innerRadius}
+        outerRadius={outerRadius}
+        startAngle={startAngle}
+        endAngle={endAngle}
+        fill={fill}
+      />
+      <Sector
+        cx={cx}
+        cy={cy}
+        startAngle={startAngle}
+        endAngle={endAngle}
+        innerRadius={outerRadius + 6}
+        outerRadius={outerRadius + 10}
+        fill={fill}
+      />
+    </g>
+  )
+}
+/* eslint-enable */
 
 export function Charts() {
   const [food, house, education, transport, healthAndBeauty] =
@@ -48,6 +106,9 @@ export function Charts() {
     { name: "Gastos", value: expenses() },
   ]
 
+  const [fieldsActiveIndex, setFieldsActiveIndex] = useState(1)
+  const [areasActiveIndex, setAreasActiveIndex] = useState(2)
+
   return (
     <>
       <header className={`container ${styles.header}`}>
@@ -73,46 +134,20 @@ export function Charts() {
       <main className={styles.main}>
         {expenses() > 0 || revenue() > 0 || investment() > 0 ? (
           <ResponsiveContainer width="100%" height="100%">
-            <PieChart style={{ fontSize: 14 }}>
+            <PieChart>
               <Pie
+                activeShape={renderActiveShape}
+                activeIndex={fieldsActiveIndex}
+                onMouseEnter={(_, index) => setFieldsActiveIndex(index)}
                 data={fields}
                 dataKey="value"
                 nameKey="name"
                 cx="50%"
-                cy="128"
-                outerRadius={128}
+                cy="160"
+                outerRadius={144}
+                innerRadius={100}
                 strokeWidth={2}
                 fill={COLORS[6]}
-                filter="#fff"
-                label={({
-                  cx,
-                  cy,
-                  midAngle,
-                  innerRadius,
-                  outerRadius,
-                  value,
-                  index,
-                }: Record<string, number>) => {
-                  const RADIAN = Math.PI / 180
-                  const radius = innerRadius + (outerRadius - innerRadius) * 0.6
-                  const x = cx + radius * Math.cos(-midAngle * RADIAN)
-                  const y = cy + radius * Math.sin(-midAngle * RADIAN)
-
-                  return value > 0 ? (
-                    <text
-                      x={x}
-                      y={y}
-                      className={styles.label}
-                      textAnchor={x > cx ? "start" : "end"}
-                      dominantBaseline="central"
-                    >
-                      <tspan>{fields[index].name}</tspan>{" "}
-                      <tspan x={x} y={y + 15}>
-                        ({formatCurrency(value)})
-                      </tspan>
-                    </text>
-                  ) : null
-                }}
                 labelLine={false}
               >
                 {fields.map((_, index) => {
@@ -127,44 +162,18 @@ export function Charts() {
               </Pie>
 
               <Pie
+                activeShape={renderActiveShape}
+                activeIndex={areasActiveIndex}
+                onMouseEnter={(_, index) => setAreasActiveIndex(index)}
                 data={areas}
                 dataKey="value"
                 nameKey="name"
                 cx="50%"
-                cy="460"
-                outerRadius={128}
-                innerRadius={64}
+                cy="510"
+                outerRadius={144}
+                innerRadius={100}
                 strokeWidth={2}
                 fill={COLORS[6]}
-                label={({
-                  cx,
-                  cy,
-                  midAngle,
-                  innerRadius,
-                  outerRadius,
-                  value,
-                  index,
-                }: Record<string, number>) => {
-                  const RADIAN = Math.PI / 180
-                  const radius = innerRadius + (outerRadius - innerRadius) * 0.3
-                  const x = cx + radius * Math.cos(-midAngle * RADIAN)
-                  const y = cy + radius * Math.sin(-midAngle * RADIAN)
-
-                  return value > 0 ? (
-                    <text
-                      x={x}
-                      y={y}
-                      className={styles.label}
-                      textAnchor={x > cx ? "start" : "end"}
-                      dominantBaseline="central"
-                    >
-                      <tspan>{areas[index].name}</tspan>{" "}
-                      <tspan x={x} y={y + 15}>
-                        ({formatCurrency(value)})
-                      </tspan>
-                    </text>
-                  ) : null
-                }}
                 labelLine={false}
               >
                 {areas.map((_, index) => {
