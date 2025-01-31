@@ -76,6 +76,7 @@
   display: flex;
 
   gap: 16px;
+  padding-inline: 8px;
   margin-block: 32px 64px;
 }
 
